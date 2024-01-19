@@ -1,3 +1,4 @@
+import 'package:czar_challenge/screens/interests.dart';
 import 'package:czar_challenge/screens/tab.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: theme,
-      home: const TabScreen(),
+      home:  InterestsScreen(),
     );
   }
 }

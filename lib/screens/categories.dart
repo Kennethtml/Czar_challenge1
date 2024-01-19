@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  CategoriesScreen({super.key});
+  const CategoriesScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return 
@@ -28,7 +28,7 @@ class CategoriesScreen extends StatelessWidget {
                   Icon(Icons.arrow_circle_down)],
            
                 ),
-                SizedBox(height:40 ,),
+                const SizedBox(height:40 ,),
                  Expanded(
                    child: GridView(
 

@@ -29,6 +29,7 @@ class _AnimatedToggleState extends State<AnimatedToggle> {
       width: widget.containerWidth,
       height: widget.containerHeight,
       margin: EdgeInsets.all(20),
+      padding: EdgeInsets.all(2),
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.grey,
@@ -50,6 +51,7 @@ class _AnimatedToggleState extends State<AnimatedToggle> {
             child: Container(
               width:  widget.containerWidth,
               height: widget.containerHeight,
+              padding: EdgeInsets.all(2),
               decoration: ShapeDecoration(
                 color: widget.backgroundColor,
                 shape: RoundedRectangleBorder(
