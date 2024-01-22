@@ -40,8 +40,32 @@ class InterestsScreen extends StatefulWidget {
   State<InterestsScreen> createState() => _InterestsScreenState();
 }
 
-class _InterestsScreenState extends State<InterestsScreen> {
+class _InterestsScreenState extends State<InterestsScreen> with TickerProviderStateMixin  {
+  late AnimationController _animationController;
+
+  //configure my animation controller
+  @override
+  void initState(){
+    super.initState();
+     _animationController=AnimationController(vsync: this,
+     duration: Duration(seconds: 1),
+     lowerBound: 0,
+     upperBound: 1);
+
+     _animationController.repeat();
+  }
+
+//dispose my animation controller
+  @override
+  void dispose(){
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  
+  
   List<String> _selectedInterests = [];
+
 
   //function to update the selection of interests
   void updateInterest(String interest) {
@@ -60,9 +84,15 @@ class _InterestsScreenState extends State<InterestsScreen> {
   bool isAnInterest(String interest) {
     setState(() {});
     return _selectedInterests.contains(interest);
+   
   }
-
+double opacityLevel = 1.0;
   @override
+
+    
+
+ 
+  
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -120,7 +150,8 @@ class _InterestsScreenState extends State<InterestsScreen> {
             width: 326,
             child: Wrap(spacing: 8, runSpacing: 9, children: [
               for (final interest in interests)
-                DottedBorder(
+              AnimatedBuilder(animation: _animationController,child: DottedBorder(
+                 
                   borderType: BorderType.RRect,
                   padding: EdgeInsets.all(0),
                   strokeWidth: 2,
@@ -148,7 +179,8 @@ class _InterestsScreenState extends State<InterestsScreen> {
                               : Colors.black),
                     ),
                   ),
-                )
+                ), builder: (context,child)=>  Opacity(opacity: _animationController.value,child: child,)   )
+           
             ]),
           ),
           const SizedBox(

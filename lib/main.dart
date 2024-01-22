@@ -1,4 +1,7 @@
+import 'package:czar_challenge/screens/Lessons.dart';
 import 'package:czar_challenge/screens/interests.dart';
+import 'package:czar_challenge/screens/loading.dart';
+import 'package:czar_challenge/screens/speaking.dart';
 import 'package:czar_challenge/screens/tab.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -50,7 +53,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: theme,
-      home:  InterestsScreen(),
+      home:  LoadingScreen(),
     );
   }
 }

@@ -64,6 +64,8 @@ flutter:
   assets:
     - assets/images/connection.png
     - assets/images/connection_active.png
+    - assets/images/microphone.png
+    - assets/images/speaker.png
     - assets/images/books.png
     - assets/images/chat.png
     - assets/images/headphone.png
