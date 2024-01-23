@@ -1,3 +1,4 @@
+import 'package:czar_challenge/screens/profile.dart';
 import 'package:czar_challenge/screens/streaks.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +70,9 @@ class Header extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          Image.asset('assets/images/header/avatar.png')
+        GestureDetector(onTap: (){
+          Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>ProfileScreen()));
+        },child: Hero( tag:'avatar',child: Image.asset('assets/images/header/avatar.png')))
         ],
       ),
     );

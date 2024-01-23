@@ -5,6 +5,37 @@ import 'package:czar_challenge/widgets/custombutton.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 
+
+class InterestsScreen extends StatefulWidget {
+  InterestsScreen({super.key});
+
+  @override
+  State<InterestsScreen> createState() => _InterestsScreenState();
+}
+
+class _InterestsScreenState extends State<InterestsScreen> with TickerProviderStateMixin  {
+  late AnimationController _animationController;
+
+  //configure my animation controller
+  @override
+  void initState(){
+    super.initState();
+     _animationController=AnimationController(vsync: this,
+
+     duration: Duration(seconds: 4),
+     lowerBound: 0,
+     upperBound: 1);
+
+     _animationController.forward();
+  }
+
+//dispose my animation controller
+  @override
+  void dispose(){
+    _animationController.dispose();
+    super.dispose();
+  }
+
 final List<String> interests = [
   'Studies',
   'Reading',
@@ -32,36 +63,6 @@ final List<String> interests = [
   'Shopping',
   'Sight-seeing'
 ];
-
-class InterestsScreen extends StatefulWidget {
-  InterestsScreen({super.key});
-
-  @override
-  State<InterestsScreen> createState() => _InterestsScreenState();
-}
-
-class _InterestsScreenState extends State<InterestsScreen> with TickerProviderStateMixin  {
-  late AnimationController _animationController;
-
-  //configure my animation controller
-  @override
-  void initState(){
-    super.initState();
-     _animationController=AnimationController(vsync: this,
-     duration: Duration(seconds: 1),
-     lowerBound: 0,
-     upperBound: 1);
-
-     _animationController.repeat();
-  }
-
-//dispose my animation controller
-  @override
-  void dispose(){
-    _animationController.dispose();
-    super.dispose();
-  }
-
   
   
   List<String> _selectedInterests = [];
@@ -201,8 +202,28 @@ double opacityLevel = 1.0;
           Align(
             alignment: Alignment.center,
             child: CustomButton(caption: 'Continue', action: () {
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (ctx) => TabScreen()));},
+              print('I ran');
+              Navigator.of(context).pushReplacement(
+  PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => TabScreen(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset(1.0, 0.0);
+      var end = Offset.zero;
+      var curve = Curves.easeIn;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      var offsetAnimation = animation.drive(tween);
+
+      return SlideTransition(
+        position: offsetAnimation,
+        child: child,
+      );
+    },
+    transitionDuration: Duration(milliseconds: 500), // Specify your desired duration
+  ),
+);
+
+            },
                     type: 'outlined',)
             ),
           

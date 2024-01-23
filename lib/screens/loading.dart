@@ -12,9 +12,26 @@ class LoadingScreen extends StatefulWidget {
 class _LoadingScreenState extends State<LoadingScreen> {
    Future  _initializeApp() async{
     await Future.delayed(
-      Duration(seconds: 1)
+      Duration(seconds: 6)
     );
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx)=>InterestsScreen()));
+    Navigator.of(context).pushReplacement(
+  PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => InterestsScreen(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset(0.0, 1.0);
+      var end = Offset.zero;
+      var curve = Curves.bounceOut;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      var offsetAnimation = animation.drive(tween);
+
+      return SlideTransition(
+        position: offsetAnimation,
+        child: child,
+      );
+    },
+    transitionDuration: Duration(seconds: 2), // Specify your desired duration
+  ));
   }
 
   @override
