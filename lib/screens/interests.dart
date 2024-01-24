@@ -1,4 +1,4 @@
-import 'dart:ffi';
+
 
 import 'package:czar_challenge/screens/tab.dart';
 import 'package:czar_challenge/widgets/custombutton.dart';
@@ -202,7 +202,7 @@ double opacityLevel = 1.0;
           Align(
             alignment: Alignment.center,
             child: CustomButton(caption: 'Continue', action: () {
-              print('I ran');
+             
               Navigator.of(context).pushReplacement(
   PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => TabScreen(),
