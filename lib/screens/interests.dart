@@ -66,6 +66,7 @@ final List<String> interests = [
   
   
   List<String> _selectedInterests = [];
+  
 
 
   //function to update the selection of interests
@@ -77,8 +78,11 @@ final List<String> interests = [
       if (_selectedInterests.length >= 6) return;
       _selectedInterests.add(interest);
     }
+    setState(() {
+    
+    });
 
-    setState(() {});
+    
   }
 
 //function returns a boolean for if an interest has been selected . its useful to conditionally render certain styles for interests when selected
@@ -95,6 +99,7 @@ double opacityLevel = 1.0;
  
   
   Widget build(BuildContext context) {
+    var width=MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: Padding(
@@ -106,14 +111,24 @@ double opacityLevel = 1.0;
               const Icon(Icons.keyboard_arrow_left_sharp),
               const Spacer(),
               SizedBox(
-                width: 300,
-                child: LinearProgressIndicator(
-                  backgroundColor: const Color.fromRGBO(144, 138, 137, 1),
-                  value: _selectedInterests.length / 6,
-                  minHeight: 10,
-                  borderRadius: BorderRadius.circular(10),
-                  valueColor: const AlwaysStoppedAnimation(
-                      Color.fromRGBO(101, 12, 1, 0.89)),
+                width: width* 0.75,
+                child: TweenAnimationBuilder(
+                  tween: Tween(begin: 0.0,end:( _selectedInterests.length.toDouble()/6)),
+                  duration: Duration(milliseconds: 300),
+                  builder: (context, value, child){
+
+                  return LinearProgressIndicator(
+                    backgroundColor: const Color.fromRGBO(144, 138, 137, 1),
+                    value: value.toDouble(),
+                    
+                    minHeight: 10,
+                    borderRadius: BorderRadius.circular(10),
+                    valueColor: const AlwaysStoppedAnimation(
+                        Color.fromRGBO(101, 12, 1, 0.89)),
+                  );
+                
+                  }
+                  
                 ),
               ),
               const Spacer(),

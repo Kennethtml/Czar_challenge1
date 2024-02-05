@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class LessonCard extends StatelessWidget {
   final String title;
@@ -28,7 +29,7 @@ class LessonCard extends StatelessWidget {
           child:ColorFiltered(
             colorFilter: ColorFilter.mode(Color.fromRGBO(222, 222, 206, 1), BlendMode.darken),
             child: FadeInImage(
-              placeholder: AssetImage(backgroundImage),
+              placeholder: MemoryImage(kTransparentImage),
               image: AssetImage(backgroundImage),
               fit: BoxFit.cover,
               height: 130,
