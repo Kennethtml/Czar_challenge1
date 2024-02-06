@@ -72,7 +72,7 @@ class Header extends StatelessWidget {
           const Spacer(),
         GestureDetector(onTap: (){
           Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>ProfileScreen()));
-        },child: Hero( tag:'avatar',child: Image.asset('assets/images/header/avatar.png')))
+        },child: Hero( tag:'avatar',child: CircleAvatar( backgroundColor:Color.fromARGB(192, 235, 133, 167) ,child:Image.asset('assets/images/header/avatar.png'))))
         ],
       ),
     );
